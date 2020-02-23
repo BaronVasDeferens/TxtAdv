@@ -7,6 +7,8 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
     MOVE_WEST(listOf("west", "w"), "Going west..."),
     MOVE_UP(listOf("up", "u"),"Going up..."),
     MOVE_DOWN(listOf("down", "d"), "Heading down..."),
+    MOVE_IN(listOf("in"), "Going in..."),
+    MOVE_OUT(listOf("out"), "Heading out..."),
 
     TAKE(listOf("take"), "You take "),
     DROP(listOf("drop"), "You drop "),

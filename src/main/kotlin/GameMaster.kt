@@ -11,6 +11,7 @@ class GameMaster {
         val tokens: List<String> = command
                 .split(" ")
                 .filterNot { input -> ignoreThese.any { it == input } }
+                .map{ it.toLowerCase() }
                 .toList()
 
         val parsedAction = Action.values()

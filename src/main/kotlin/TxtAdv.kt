@@ -5,6 +5,12 @@ object TxtAdv {
     @JvmStatic
     fun main (args: Array<String>) {
 
+        println("""TITLE OF GAME
+            |A Text Adventure by Scott West
+            |2020 Derp Interactive
+            |
+        """.trimMargin())
+
         val gm = GameMaster()
 
         val sin = System.`in`.bufferedReader()

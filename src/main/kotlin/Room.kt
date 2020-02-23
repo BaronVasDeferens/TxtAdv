@@ -7,7 +7,8 @@ abstract class Room(val name: String, val description: String) {
     open val items: MutableList<Item> = mutableListOf()
 
     fun describe(): String {
-        return """$name
+        return """
+            |$name
             |$description
             |${listItems()}""".trimMargin()
     }
@@ -55,39 +56,46 @@ abstract class Room(val name: String, val description: String) {
                 GameState(this, false)
             }
             LOOK -> {
-                println(this.listItems())
+                println(this.describe())
                 GameState(this, false)
             }
-            else -> { GameState(this, false) }
+            else -> {
+                GameState(this, false)
+            }
         }
     }
 
     fun listItems(): String {
-        return if (items.isEmpty()) "" else { "You can see..." +
-            items.joinToString { "\n\t" }
+        return if (items.isEmpty()) "" else {
+            "You can see..." +
+                    items.joinToString { "\n\t" }
         }
     }
 
 }
 
-class StartingRoom : Room("Basement", """
-    |This windowless basement is dim and still.
-    |In the center of the room, surrounded by a pile of loose earth, is a large, roughly-hewn hole which plunges into absolute darkness.
+class StartingRoom : Room("Cellar", """
+    |This windowless cellar is dim and still.
+    |In the center of the room, surrounded by a ring of loose soil, is a large, roughly-hewn hole in the earthen floor.
     |The hole looks big enough to accommodate a person.""".trimMargin()) {
 }
 
-class HoleEntrance : Room("The Hole", """You are in a large, earthen hole, several feet deep. The bare soil is loose and moist. It does not appear to be man-made.
+class HoleEntrance : Room("The Hole",
+        """You are in a large, earthen hole. Your head just barely peeks over the top. The bare soil is loose and moist.
     |Above, a naked bulb emits weak yellow light.
-    |Below, a tunnel curves downward.
+    |Below, by your feet, a narrow tunnel curves downward and plunges into absolute darkness.
 """.trimMargin()) {
 }
 
-class DarkTunnel : Room("Dark Tunnel", """Muddy and dark, the tunnel is only large enough to crawl through.
-    |As it slopes further downward, it becomes impossible to back up. There's no going back.
-    |Further down, the air feels crisp and fresh."""".trimMargin())
+class DarkTunnel : Room("Dark Tunnel", """Muddy and dark, the tunnel is only just large enough to crawl through.
+    |The steep slope makes it impossible to back up. There's no going back.
+    |The dark tunnel continues downward.""".trimMargin())
 
-class CaveEnd : Room("Cave End", """This is a dumb place""")
-
+class DarkTunnelEnd : Room("Tunnel End", """
+    You find yourself at the end of a rocky cave. It's quite dark. Moisture gently glints off the rough stone of the cave walls.
+    You can see the outline of a muddy hole in the loose rock above.
+    To the east, a dim light.
+    """.trimIndent())
 
 
 // FIXME: replace with DSL?
@@ -96,7 +104,7 @@ class World {
     val start = StartingRoom()
     private val holeEntrance = HoleEntrance()
     private val darkTunnel = DarkTunnel()
-    private val caveEnd = CaveEnd()
+    private val caveEnd = DarkTunnelEnd()
 
     init {
         start.adjacentRooms[Action.MOVE_DOWN] = holeEntrance
