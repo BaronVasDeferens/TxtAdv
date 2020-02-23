@@ -11,6 +11,10 @@ class CommandTest {
         assert(gameMaster.parseText("w").action == Action.MOVE_WEST)
         assert(gameMaster.parseText("south").action == Action.MOVE_SOUTH)
         assert(gameMaster.parseText("go north").action == Action.MOVE_NORTH)
+        assert(gameMaster.parseText("up").action == Action.MOVE_UP)
+        assert(gameMaster.parseText("d").action == Action.MOVE_DOWN)
+
+
     }
 
     @Test
