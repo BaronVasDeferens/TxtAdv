@@ -10,11 +10,8 @@ class GameMaster {
         val parsedAction = Action.values()
                 .toList()
                 .firstOrNull { action: Action ->
-                    action.params.any { param -> param == tokens[0] }
+                    action.keyWords.any { param -> param == tokens[0] }
                 } ?: Action.NOTHING
-
-
-        println("${tokens[0]} -> $parsedAction")
 
         return Command(parsedAction)
     }
