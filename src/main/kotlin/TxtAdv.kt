@@ -6,12 +6,17 @@ object TxtAdv {
     fun main (args: Array<String>) {
 
         val gm = GameMaster()
+
         val sin = System.`in`.bufferedReader()
         var playerInput = sin.readLine()
 
         while (!playerInput.contentEquals("q")) {
-            val response = gm.parseText(playerInput)
-            println(response.action.display)
+            val parsedCommand = gm.parseText(playerInput)
+            val newState = gm.executeCommand(parsedCommand, gm.state)
+            if (newState.success) {
+                gm.state = newState
+            }
+
             playerInput = sin.readLine()
         }
 

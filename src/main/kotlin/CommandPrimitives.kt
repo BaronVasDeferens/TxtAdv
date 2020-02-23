@@ -10,11 +10,14 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
     TAKE(listOf("take"), "You take "),
     DROP(listOf("drop"), "You drop "),
-    EXAMINE(listOf("examine", "look"), "You look at "),
+    EXAMINE(listOf("examine"), "You look at "),
+
+    LOOK(listOf("look", "l"), ""),
 
     INVENTORY(listOf("inventory", "i"), "You are carrying: "),
     WAIT(listOf("wait", "z"), "Time passes..."),
-    NOTHING(emptyList(), "");
+
+    NOTHING(emptyList(), "You can't do that.");
 }
 
 class Item(val name: String, val description: String)

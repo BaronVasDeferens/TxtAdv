@@ -1,5 +1,11 @@
 class GameMaster {
 
+    var state = GameState(World().start)
+
+    init {
+        state.currentRoom.describe()
+    }
+
     fun parseText(command: String): Command {
 
         val tokens: List<String> = command
@@ -16,5 +22,13 @@ class GameMaster {
         return Command(parsedAction)
     }
 
-
+    fun executeCommand(command: Command, gameState: GameState): GameState {
+        return when (command.action) {
+            Action.NOTHING -> {
+                println("You can't do that!")
+                gameState
+            }
+            else -> gameState.currentRoom.performAction(command)
+        }
+    }
 }
