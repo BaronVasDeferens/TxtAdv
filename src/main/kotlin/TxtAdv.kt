@@ -20,6 +20,7 @@ object TxtAdv {
             playerInput = sin.readLine()
         }
 
+        println("You have quit the game.")
 
     }
 

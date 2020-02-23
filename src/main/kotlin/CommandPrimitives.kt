@@ -17,7 +17,7 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
     INVENTORY(listOf("inventory", "i"), "You are carrying: "),
     WAIT(listOf("wait", "z"), "Time passes..."),
 
-    NOTHING(emptyList(), "You can't do that.");
+    NOTHING(emptyList(), "You can't do that here.");
 }
 
 class Item(val name: String, val description: String)

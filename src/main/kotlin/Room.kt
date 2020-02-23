@@ -33,7 +33,6 @@ abstract class Room(val name: String, val description: String) {
         }
     }
 
-
     fun move(moveAction: Action): Room? {
         val moveToHere: Room? = adjacentRooms[moveAction]
 
@@ -41,7 +40,7 @@ abstract class Room(val name: String, val description: String) {
             moveAction.display
             moveToHere
         } else {
-            println("You can't go there.")
+            println("You can't go that way.")
             null
         }
     }
@@ -77,7 +76,6 @@ class StartingRoom : Room("Basement", """
     |The hole looks big enough to accommodate a person.""".trimMargin()) {
 }
 
-
 class HoleEntrance : Room("The Hole", """You are in a large, earthen hole, several feet deep. The bare soil is loose and moist. It does not appear to be man-made.
     |Above, a naked bulb emits weak yellow light.
     |Below, a tunnel curves downward.
@@ -85,10 +83,14 @@ class HoleEntrance : Room("The Hole", """You are in a large, earthen hole, sever
 }
 
 class DarkTunnel : Room("Dark Tunnel", """Muddy and dark, the tunnel is only large enough to crawl through.
-    |As it slopes further downward, it becomes impossible to back up.
-    |Ahead, the air feels cold and fresh."""".trimMargin())
+    |As it slopes further downward, it becomes impossible to back up. There's no going back.
+    |Further down, the air feels crisp and fresh."""".trimMargin())
 
 class CaveEnd : Room("Cave End", """This is a dumb place""")
+
+
+
+// FIXME: replace with DSL?
 
 class World {
     val start = StartingRoom()
