@@ -1,6 +1,7 @@
 val ignoreThese = listOf("the", "go")
 
 enum class Action(val keyWords: List<String> = listOf(), val display: String = "???") {
+
     MOVE_NORTH(listOf("north", "n"), "Going north..."),
     MOVE_EAST(listOf("east", "e"), "Going east..."),
     MOVE_SOUTH(listOf("south", "s"), "Going south..."),
@@ -16,7 +17,7 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
     LOOK(listOf("look", "l"), ""),
 
-    INVENTORY(listOf("inventory", "i"), "You are carrying: "),
+    INVENTORY(listOf("inventory", "i", "inv"), "You are carrying: "),
     WAIT(listOf("wait", "z"), "Time passes..."),
 
     QUIT(listOf("quit", "q"), "Ok, then..."),

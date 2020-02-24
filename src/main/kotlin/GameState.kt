@@ -1,6 +1,6 @@
 import Action.*
 
-class GameState(
+data class GameState(
         val currentRoom: Room,
         val success: Boolean = true) {
 
@@ -19,6 +19,8 @@ class GameState(
         return when (command.action) {
             MOVE_UP,
             MOVE_DOWN,
+            MOVE_IN,
+            MOVE_OUT,
             MOVE_NORTH,
             MOVE_EAST,
             MOVE_SOUTH,
@@ -37,8 +39,8 @@ class GameState(
     }
 
 
-
     fun move(moveAction: Action): Room? {
+
         val moveToHere: Room? = currentRoom.adjacentRooms[moveAction]
 
         return if (moveToHere != null) {
@@ -53,12 +55,6 @@ class GameState(
     fun executeCommand(command: Command): GameState {
 
         return when (command.action) {
-            TAKE,
-            DROP,
-            INVENTORY,
-            EXAMINE -> {
-                this
-            }
             LOOK -> {
                 println(currentRoom.describe())
                 this

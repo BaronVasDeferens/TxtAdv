@@ -21,7 +21,9 @@ class CommandTest {
     @Test
     fun `should parse misc commands`() {
         val gameMaster = GameMaster()
+        assert(gameMaster.parseText("i").action == Action.INVENTORY)
         assert(gameMaster.parseText("wait").action == Action.WAIT)
+        assert(gameMaster.parseText("Z").action == Action.WAIT)
         assert(gameMaster.parseText("q").action == Action.QUIT)
         assert(gameMaster.parseText("QUIT").action == Action.QUIT)
         assert(gameMaster.parseText("").action == Action.NOTHING)

@@ -35,6 +35,10 @@ class GameMaster {
                 println("You can't do that!")
                 state
             }
+            Action.WAIT -> {
+                println(Action.WAIT.display)
+                state
+            }
             Action.QUIT -> {
                 state
             }
