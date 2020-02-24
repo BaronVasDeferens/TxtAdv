@@ -13,57 +13,7 @@ abstract class Room(val name: String, val description: String) {
             |${listItems()}""".trimMargin()
     }
 
-    fun performAction(command: Command): GameState {
-        return when (command.action) {
-            MOVE_UP,
-            MOVE_DOWN,
-            MOVE_NORTH,
-            MOVE_EAST,
-            MOVE_SOUTH,
-            MOVE_WEST -> {
-                val resultRoom = move(command.action)
-                return if (resultRoom != null) {
-                    GameState(resultRoom)
-                } else {
-                    GameState(this, false)
-                }
-            }
-            else -> {
-                executeCommand(command)
-            }
-        }
-    }
 
-    fun move(moveAction: Action): Room? {
-        val moveToHere: Room? = adjacentRooms[moveAction]
-
-        return if (moveToHere != null) {
-            moveAction.display
-            moveToHere
-        } else {
-            println("You can't go that way.")
-            null
-        }
-    }
-
-    fun executeCommand(command: Command): GameState {
-
-        return when (command.action) {
-            TAKE,
-            DROP,
-            INVENTORY,
-            EXAMINE -> {
-                GameState(this, false)
-            }
-            LOOK -> {
-                println(this.describe())
-                GameState(this, false)
-            }
-            else -> {
-                GameState(this, false)
-            }
-        }
-    }
 
     fun listItems(): String {
         return if (items.isEmpty()) "" else {
@@ -75,7 +25,8 @@ abstract class Room(val name: String, val description: String) {
 }
 
 class StartingRoom : Room("Cellar", """
-    |This windowless cellar is dim and still.
+    |A windowless cellar, dim and still. The small room is lined with crude wooden shelves, all sagging under the weight 
+    |of dusty, useless junk.    
     |In the center of the room, surrounded by a ring of loose soil, is a large, roughly-hewn hole in the earthen floor.
     |The hole looks big enough to accommodate a person.""".trimMargin()) {
 }
@@ -107,6 +58,13 @@ class World {
     private val caveEnd = DarkTunnelEnd()
 
     init {
+
+        println("""TITLE OF GAME
+            |A Text Adventure by Scott West
+            |2020 Derp Interactive
+            |
+        """.trimMargin())
+
         start.adjacentRooms[Action.MOVE_DOWN] = holeEntrance
         holeEntrance.adjacentRooms[Action.MOVE_UP] = start
         holeEntrance.adjacentRooms[Action.MOVE_DOWN] = darkTunnel

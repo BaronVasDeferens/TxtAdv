@@ -10,7 +10,7 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
     MOVE_IN(listOf("in"), "Going in..."),
     MOVE_OUT(listOf("out"), "Heading out..."),
 
-    TAKE(listOf("take"), "You take "),
+    TAKE(listOf("take", "grab", "yoink"), "You take "),
     DROP(listOf("drop"), "You drop "),
     EXAMINE(listOf("examine"), "You look at "),
 
@@ -18,6 +18,8 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
     INVENTORY(listOf("inventory", "i"), "You are carrying: "),
     WAIT(listOf("wait", "z"), "Time passes..."),
+
+    QUIT(listOf("quit", "q"), "Ok, then..."),
 
     NOTHING(emptyList(), "You can't do that here.");
 }

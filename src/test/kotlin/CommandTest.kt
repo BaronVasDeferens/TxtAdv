@@ -1,3 +1,4 @@
+import org.junit.Ignore
 import org.junit.Test
 
 class CommandTest {
@@ -15,16 +16,18 @@ class CommandTest {
         assert(gameMaster.parseText("d").action == Action.MOVE_DOWN)
         assert(gameMaster.parseText("in").action == Action.MOVE_IN)
         assert(gameMaster.parseText("out").action == Action.MOVE_OUT)
-
     }
 
     @Test
     fun `should parse misc commands`() {
         val gameMaster = GameMaster()
         assert(gameMaster.parseText("wait").action == Action.WAIT)
+        assert(gameMaster.parseText("q").action == Action.QUIT)
+        assert(gameMaster.parseText("QUIT").action == Action.QUIT)
         assert(gameMaster.parseText("").action == Action.NOTHING)
     }
 
+    @Ignore
     @Test
     fun `should parse commands wth targets`() {
 

@@ -1,3 +1,5 @@
+import Action.*
+
 object TxtAdv {
 
 
@@ -5,29 +7,19 @@ object TxtAdv {
     @JvmStatic
     fun main (args: Array<String>) {
 
-        println("""TITLE OF GAME
-            |A Text Adventure by Scott West
-            |2020 Derp Interactive
-            |
-        """.trimMargin())
-
-        val gm = GameMaster()
+        val gameMaster = GameMaster()
 
         val sin = System.`in`.bufferedReader()
-        var playerInput = sin.readLine()
+        var playerInput = ""
+        var parsedCommand = Command(NOTHING)
 
-        while (!playerInput.contentEquals("q")) {
-            val parsedCommand = gm.parseText(playerInput)
-            val newState = gm.executeCommand(parsedCommand, gm.state)
-            if (newState.success) {
-                gm.state = newState
-            }
-
+        while (parsedCommand.action != QUIT) {
             playerInput = sin.readLine()
+            parsedCommand = gameMaster.parseText(playerInput)
+            gameMaster.executeCommand(parsedCommand)
         }
 
-        println("You have quit the game.")
-
+        println("Goodbye.")
     }
 
 

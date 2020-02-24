@@ -1,7 +1,10 @@
-class GameState(val currentRoom: Room, val success: Boolean = true) {
+import Action.*
+
+class GameState(
+        val currentRoom: Room,
+        val success: Boolean = true) {
 
     val carriedItems: MutableList<Item> = mutableListOf()
-
 
     init {
         if (success)
@@ -12,5 +15,58 @@ class GameState(val currentRoom: Room, val success: Boolean = true) {
         return currentRoom.describe()
     }
 
+    fun performAction(command: Command): GameState {
+        return when (command.action) {
+            MOVE_UP,
+            MOVE_DOWN,
+            MOVE_NORTH,
+            MOVE_EAST,
+            MOVE_SOUTH,
+            MOVE_WEST -> {
+                val resultRoom = move(command.action)
+                return if (resultRoom != null) {
+                    GameState(resultRoom)
+                } else {
+                    this
+                }
+            }
+            else -> {
+                executeCommand(command)
+            }
+        }
+    }
+
+
+
+    fun move(moveAction: Action): Room? {
+        val moveToHere: Room? = currentRoom.adjacentRooms[moveAction]
+
+        return if (moveToHere != null) {
+            moveAction.display
+            moveToHere
+        } else {
+            println("You can't go that way.")
+            null
+        }
+    }
+
+    fun executeCommand(command: Command): GameState {
+
+        return when (command.action) {
+            TAKE,
+            DROP,
+            INVENTORY,
+            EXAMINE -> {
+                this
+            }
+            LOOK -> {
+                println(currentRoom.describe())
+                this
+            }
+            else -> {
+                this
+            }
+        }
+    }
 
 }

@@ -20,16 +20,25 @@ class GameMaster {
                     action.keyWords.any { param -> param == tokens[0] }
                 } ?: Action.NOTHING
 
+        val parsedTarget = try {
+            tokens[1]
+        } catch (e: Exception) {
+            null
+        }
+
         return Command(parsedAction)
     }
 
-    fun executeCommand(command: Command, gameState: GameState): GameState {
-        return when (command.action) {
+    fun executeCommand(command: Command) {
+        state = when (command.action) {
             Action.NOTHING -> {
                 println("You can't do that!")
-                gameState
+                state
             }
-            else -> gameState.currentRoom.performAction(command)
+            Action.QUIT -> {
+                state
+            }
+            else -> state.performAction(command)
         }
     }
 }
