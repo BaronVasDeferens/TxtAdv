@@ -35,6 +35,10 @@ class GameMaster {
                 println("You can't do that!")
                 state
             }
+            Action.INVENTORY -> {
+                println(state.displayInventory())
+                state
+            }
             Action.WAIT -> {
                 println(Action.WAIT.display)
                 state

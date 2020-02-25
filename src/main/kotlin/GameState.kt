@@ -15,6 +15,16 @@ data class GameState(
         return currentRoom.describe()
     }
 
+    fun displayInventory(): String {
+        return "You are holding..." +
+        if (carriedItems.isEmpty()) {
+            "nothing!" }
+        else {
+            carriedItems.map { it.name }.joinToString { "\n" }
+        }
+    }
+
+
     fun performAction(command: Command): GameState {
         return when (command.action) {
             MOVE_UP,
