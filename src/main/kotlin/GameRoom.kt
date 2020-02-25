@@ -4,7 +4,7 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 @JsonClass(generateAdapter = true)
-data class Connection(val id: String, val action: Action)
+data class Connection(val action: Action, val id: String)
 
 @JsonClass(generateAdapter = true)
 data class GameRoom(
@@ -12,6 +12,8 @@ data class GameRoom(
         val id: String,
         val description: String,
         val adjacentRoomIds: List<Connection>) {
+
+    val adjacentRooms = mutableMapOf<Action, GameRoom>()
 
     fun describe(): String {
         return """
@@ -32,14 +34,19 @@ class GameWorld {
     private val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
-
-
     init {
         val data = GameWorld::class.java.getResourceAsStream("test_world_01.json").bufferedReader().readText()
         val typeAdapter = Types.newParameterizedType(List::class.java, GameRoom::class.java, Connection::class.java)
         val adapter = moshi.adapter<List<GameRoom>>(typeAdapter)
         rooms = adapter.fromJson(data)!!
-        println(rooms)
+
+        val idToRoom = mutableMapOf<String, GameRoom>()
+        rooms.forEach { idToRoom[it.id] = it }
+        rooms.forEach { room: GameRoom ->
+            room.adjacentRoomIds.forEach { conn -> room.adjacentRooms[conn.action] = idToRoom[conn.id]!!  }
+        }
+
+        rooms.forEach { println(it.adjacentRooms) }
     }
 
 }

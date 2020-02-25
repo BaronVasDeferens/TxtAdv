@@ -8,7 +8,7 @@
   {
     "name": "Stairwell Level 5",
     "id": "STAIRWELL_5",
-    "description": "The stairwell is lit exclusively by dim green strips set into the concrete walls. The stairs spiral down into absolute darkness. There is door marked 'EXIT' here.",
-    "adjacentRoomIds": [{"id": "START", "action": "MOVE_OUT"}]
+    "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. The stairs spiral downward. To the north, a door marked 'EXIT'.",
+    "adjacentRoomIds": [{"id": "START", "action": "MOVE_NORTH"}]
   }
 ]
