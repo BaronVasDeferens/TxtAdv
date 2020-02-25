@@ -23,7 +23,7 @@ data class GameRoom(
     }
 
     fun listItems(): String {
-        return "TODO"
+        return ""
     }
 }
 
@@ -48,8 +48,6 @@ class GameWorld {
         }
 
         startingRoom = idToRoom["START"]!!
-
-        rooms.forEach { println(it.adjacentRooms) }
     }
 
 }

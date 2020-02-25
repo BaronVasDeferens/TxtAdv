@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="derp">
-    <output-path>$PROJECT_DIR$/out/artifacts/derp</output-path>
-    <root id="archive" name="derp.jar">
+  <artifact type="jar" build-on-make="true" name="TxtAdv:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TxtAdv_jar</output-path>
+    <root id="archive" name="TxtAdv.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>

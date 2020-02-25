@@ -2,13 +2,52 @@
   {
     "name": "Landing Platform",
     "id": "START",
-    "description": "This is the roof of the ruined building. Though the paint has blistered and flaked away, you can still make out the markings that designate this as a platform for ariel vehicles. The door to the stairs stands open to the south.",
-    "adjacentRoomIds": [{"id": "STAIRWELL_5", "action": "MOVE_SOUTH"}]
+    "description": "This is the wide-open roof of the ruined building. Weird purple plants sprint randomly from the web of cracks in the roof's surface. You can still make out the weathered markings that designate this as a platform for arial vehicles. The door to the stairs stands open to the south.",
+    "adjacentRoomIds": [
+      {
+        "id": "STAIRWELL_5",
+        "action": "MOVE_SOUTH"
+      }
+    ]
   },
   {
-    "name": "Stairwell Level 5",
+    "name": "Stairwell",
     "id": "STAIRWELL_5",
-    "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. The stairs spiral downward. To the north, a door marked 'EXIT'.",
-    "adjacentRoomIds": [{"id": "START", "action": "MOVE_NORTH"}]
+    "description": "The top of the stairwell. The stairs descend. To the north, natural light streams in through an open door marked 'EXIT.'",
+    "adjacentRoomIds": [
+      {
+        "id": "START",
+        "action": "MOVE_NORTH"
+      },
+      {
+        "id": "STAIRWELL_4",
+        "action": "MOVE_DOWN"
+      }
+    ]
+  },
+  {
+    "name": "Stairwell",
+    "id": "STAIRWELL_4",
+    "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. Downstairs there loos to be a door and a landing. It seems a lot brighter upstairs.",
+    "adjacentRoomIds": [
+      {
+        "id": "STAIRWELL_5",
+        "action": "MOVE_UP"},
+      {
+        "id": "STAIR_LANDING",
+        "action": "MOVE_DOWN"
+      }
+    ]
+  },
+  {
+    "name": "Landing",
+    "id": "STAIR_LANDING",
+    "description": "A landing in the stairwell. LIke the rest of this well, it is dim and green. To the north of the landing is a steel door marked '4.'The stairs lead up, but the down are impassably choked with rubble.",
+    "adjacentRoomIds": [
+      {
+        "id": "STAIRWELL_4",
+        "action": "MOVE_UP"
+      }
+    ]
   }
 ]
