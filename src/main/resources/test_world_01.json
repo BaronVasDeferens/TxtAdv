@@ -1,8 +1,14 @@
 [
   {
-    "name": "one"
+    "name": "Landing Platform",
+    "id": "START",
+    "description": "This is the roof of the ruined building. Though the paint has blistered and flaked away, you can still make out the markings that designate this as a platform for ariel vehicles. The door to the stairs stands open to the south.",
+    "adjacentRoomIds": [{"id": "STAIRWELL_5", "action": "MOVE_SOUTH"}]
   },
   {
-    "name": "two"
+    "name": "Stairwell Level 5",
+    "id": "STAIRWELL_5",
+    "description": "The stairwell is lit exclusively by dim green strips set into the concrete walls. The stairs spiral down into absolute darkness. There is door marked 'EXIT' here.",
+    "adjacentRoomIds": [{"id": "START", "action": "MOVE_OUT"}]
   }
 ]
