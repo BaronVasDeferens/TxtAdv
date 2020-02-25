@@ -35,4 +35,9 @@ class CommandTest {
 
     }
 
+    @Test
+    fun `can read game world from json`() {
+        val gameWorld = GameWorld()
+    }
+
 }
