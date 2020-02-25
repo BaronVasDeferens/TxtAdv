@@ -1,7 +1,7 @@
 import Action.*
 
 data class GameState(
-        val currentRoom: Room,
+        val currentRoom: GameRoom,
         val success: Boolean = true) {
 
     val carriedItems: MutableList<Item> = mutableListOf()
@@ -49,9 +49,9 @@ data class GameState(
     }
 
 
-    fun move(moveAction: Action): Room? {
+    fun move(moveAction: Action): GameRoom? {
 
-        val moveToHere: Room? = currentRoom.adjacentRooms[moveAction]
+        val moveToHere: GameRoom? = currentRoom.adjacentRooms[moveAction]
 
         return if (moveToHere != null) {
             moveAction.display

@@ -30,6 +30,7 @@ data class GameRoom(
 class GameWorld {
 
     private var rooms: List<GameRoom>
+    lateinit var startingRoom: GameRoom
 
     private val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
@@ -45,6 +46,8 @@ class GameWorld {
         rooms.forEach { room: GameRoom ->
             room.adjacentRoomIds.forEach { conn -> room.adjacentRooms[conn.action] = idToRoom[conn.id]!!  }
         }
+
+        startingRoom = idToRoom["START"]!!
 
         rooms.forEach { println(it.adjacentRooms) }
     }

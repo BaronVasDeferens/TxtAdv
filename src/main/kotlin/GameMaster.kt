@@ -1,6 +1,6 @@
 class GameMaster {
 
-    var state = GameState(World().start)
+    var state = GameState(GameWorld().startingRoom)
 
     init {
         state.currentRoom.describe()
