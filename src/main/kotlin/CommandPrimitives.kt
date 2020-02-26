@@ -1,4 +1,4 @@
-val ignoreThese = listOf("the", "go")
+val ignoreThese = listOf("the", "go", "turn")
 
 enum class Action(val keyWords: List<String> = listOf(), val display: String = "???") {
 
@@ -11,6 +11,8 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
     MOVE_IN(listOf("in"), "Going in..."),
     MOVE_OUT(listOf("out"), "Heading out..."),
 
+    ACTIVATE(listOf("on", "activate"), ""),
+    DEACTIVATE(listOf("off", "deactivate"), ""),
     TAKE(listOf("take", "grab", "yoink"), "You take "),
     DROP(listOf("drop"), "You drop "),
     EXAMINE(listOf("examine"), "You look at "),
@@ -27,4 +29,4 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
 class Item(val name: String, val description: String)
 
-data class Command(val action: Action = Action.NOTHING, val target: GameItem? = null)
+data class Command(val action: Action = Action.NOTHING, val target: InteractiveObject? = null)

@@ -2,18 +2,54 @@
   {
     "name": "Landing Platform",
     "id": "START",
-    "description": "This is the wide-open roof of the ruined building. Weird purple plants sprint randomly from the web of cracks in the roof's surface. You can still make out the weathered markings that designate this as a platform for arial vehicles. The door to the stairs stands open to the south.",
+    "description": "This is the wide-open roof of the ruined building. Wispy purple plants sprint randomly from the web of cracks in the roof's surface. You can still make out the weathered markings that designate this as a platform for arial vehicles. There is a stairwell access door to the south.",
     "adjacentRoomIds": [
       {
         "id": "STAIRWELL_5",
         "action": "MOVE_SOUTH"
       }
-    ]
+    ],
+    "interactiveObject": {
+      "name": "terminal",
+      "id": "TERMINAL_SCREEN",
+      "description": "You see a computer terminal set into the wall by the door.",
+      "state": "OFF",
+      "keywords": [
+        "screen", "terminal", "computer"
+      ],
+      "objectActions": [
+        {
+          "action": "EXAMINE",
+          "startState": "OFF",
+          "endState": "OFF",
+          "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
+        },
+        {
+          "action": "ACTIVATE",
+          "startState": "OFF",
+          "endState": "ON",
+          "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
+        },
+        {
+          "action": "EXAMINE",
+          "startState": "ON",
+          "endState": "ON",
+          "verbiage": "The words 'ERROR No. 584: OUT OF ORDER' blink on the screen."
+        },
+        {
+          "action": "DEACTIVATE",
+          "startState": "ON",
+          "endState": "OFF",
+          "verbiage": "The terminal shuts down, exactly as useful as it was when it was on."
+        }
+      ]
+    }
   },
+
   {
-    "name": "Stairwell",
+    "name": "Stairwell Top",
     "id": "STAIRWELL_5",
-    "description": "The top of the stairwell. The stairs descend. To the north, natural light streams in through an open door marked 'EXIT.'",
+    "description": "The top of a stairwell. The stairs descend from here. To the north, natural light streams in through an open door marked 'EXIT.'",
     "adjacentRoomIds": [
       {
         "id": "START",
@@ -23,8 +59,10 @@
         "id": "STAIRWELL_4",
         "action": "MOVE_DOWN"
       }
-    ]
+    ],
+    "interactiveObject": null
   },
+
   {
     "name": "Stairwell",
     "id": "STAIRWELL_4",
@@ -32,22 +70,26 @@
     "adjacentRoomIds": [
       {
         "id": "STAIRWELL_5",
-        "action": "MOVE_UP"},
+        "action": "MOVE_UP"
+      },
       {
         "id": "STAIR_LANDING",
         "action": "MOVE_DOWN"
       }
-    ]
+    ],
+    "interactiveObject": null
   },
+
   {
     "name": "Landing",
     "id": "STAIR_LANDING",
-    "description": "A landing in the stairwell. LIke the rest of this well, it is dim and green. To the north of the landing is a steel door marked '4.'The stairs lead up, but the down are impassably choked with rubble.",
+    "description": "A floor landing in the stairwell. Like the rest of the stairwell, it is dim and green. To the north of the landing is a steel door marked '4.' The stairs lead up, but the stairs down are impassably choked with rubble.",
     "adjacentRoomIds": [
       {
         "id": "STAIRWELL_4",
         "action": "MOVE_UP"
       }
-    ]
+    ],
+    "interactiveObject": null
   }
 ]

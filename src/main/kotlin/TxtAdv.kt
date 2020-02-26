@@ -2,12 +2,10 @@ import Action.*
 
 object TxtAdv {
 
-
-
     @JvmStatic
-    fun main (args: Array<String>) {
+    fun main(args: Array<String>) {
 
-        val gameMaster = GameMaster()
+        val gameMaster = GameMaster("test_world_01.json")
 
         val sin = System.`in`.bufferedReader()
         var playerInput = ""
@@ -21,6 +19,5 @@ object TxtAdv {
 
         println("Goodbye.")
     }
-
-
 }
+
