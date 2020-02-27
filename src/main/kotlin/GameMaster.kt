@@ -35,6 +35,8 @@ class GameMaster(worldFile: String) {
 
     fun executeCommand(command: Command) {
 
+        // TODO: move into GameState
+
         state = when (command.action) {
             Action.NOTHING -> {
                 println("You can't do that!")
@@ -49,7 +51,7 @@ class GameMaster(worldFile: String) {
             Action.EXAMINE -> {
                 if (command.target != null) {
                     val objectAction = command.target.objectActions.firstOrNull { it.action == command.action && command.target.state == it.startState }
-                    objectAction?.let { command.target.triggerAction(objectAction) }
+                    objectAction?.let { command.target.triggerAction(it) }
                 } else {
                     println("You can't do that to ${command.target!!.name}.")
                 }
@@ -62,6 +64,7 @@ class GameMaster(worldFile: String) {
             Action.QUIT -> {
                 state
             }
+            Action.LOOK,
             Action.MOVE_NORTH,
             Action.MOVE_EAST,
             Action.MOVE_SOUTH,

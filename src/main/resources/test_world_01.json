@@ -31,6 +31,12 @@
           "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
         },
         {
+          "action": "ACTIVATE",
+          "startState": "ON",
+          "endState": "ON",
+          "verbiage": "The terminal is already on."
+        },
+        {
           "action": "EXAMINE",
           "startState": "ON",
           "endState": "ON",
@@ -41,6 +47,12 @@
           "startState": "ON",
           "endState": "OFF",
           "verbiage": "The terminal shuts down, exactly as useful as it was when it was on."
+        },
+        {
+          "action": "DEACTIVATE",
+          "startState": "OFF",
+          "endState": "OFF",
+          "verbiage": "The terminal is already off."
         }
       ]
     }
