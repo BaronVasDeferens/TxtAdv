@@ -4,74 +4,98 @@ data class GameState(
         val currentRoom: GameRoom,
         val success: Boolean = true) {
 
+    companion object {
+        fun doublePrint(msg: String) {
+            println("$msg\n")
+        }
+    }
+
     val carriedItems: MutableList<Item> = mutableListOf()
 
-    init {
-        if (success)
-            println(onEnter())
+    fun describeCurrentRoom() {
+        doublePrint(currentRoom.describe())
     }
 
-    fun onEnter(): String {
-        return currentRoom.describe()
-    }
-
-    fun displayInventory(): String {
-        return "You are holding..." +
-        if (carriedItems.isEmpty()) {
-            "nothing!" }
-        else {
-            carriedItems.map { it.name }.joinToString { "\n" }
-        }
+    fun displayInventory() {
+        val msg = "You are holding..." +
+                if (carriedItems.isEmpty()) {
+                    "nothing!"
+                } else {
+                    carriedItems.map { it.name }.joinToString { "\n" }
+                }
+        doublePrint(msg)
     }
 
 
     fun performAction(command: Command): GameState {
+
         return when (command.action) {
-            MOVE_UP,
-            MOVE_DOWN,
-            MOVE_IN,
-            MOVE_OUT,
+            NOTHING -> {
+                doublePrint("I don't know what you mean...")
+                this
+            }
+            INVENTORY -> {
+                displayInventory()
+                this
+            }
+            LOOK -> {
+                describeCurrentRoom()
+                this
+            }
+
+            ACTIVATE,
+            DEACTIVATE,
+            EXAMINE -> {
+                if (command.target != null) {
+                    val objectAction = command.target.objectActions.firstOrNull { it.action == command.action && command.target.state == it.startState }
+                    objectAction?.let { command.target.triggerAction(it) }
+                } else {
+                    doublePrint("You can't do that to ${command.target!!.name}.")
+                }
+                this
+            }
+            WAIT -> {
+                doublePrint(WAIT.display)
+                this
+            }
+            QUIT -> {
+                this
+            }
+            LOOK,
             MOVE_NORTH,
             MOVE_EAST,
             MOVE_SOUTH,
-            MOVE_WEST -> {
-                val resultRoom = move(command.action)
-                return if (resultRoom != null) {
-                    GameState(resultRoom)
-                } else {
-                    this
-                }
+            MOVE_WEST,
+            MOVE_UP,
+            MOVE_DOWN,
+            MOVE_IN,
+            MOVE_OUT -> {
+                this.copy(currentRoom = move(command.action))
             }
+
             else -> {
-                executeCommand(command)
+                doublePrint("I don't understand that.")
+                this
             }
         }
+
     }
 
 
-    fun move(moveAction: Action): GameRoom? {
+    fun move(moveAction: Action): GameRoom {
 
         val moveToHere: GameRoom? = currentRoom.adjacentRooms[moveAction]
 
         return if (moveToHere != null) {
+            if (moveToHere.beenVisited == false) {
+                doublePrint(moveToHere.describe())
+                moveToHere.beenVisited = true
+            }
             moveAction.display
             moveToHere
         } else {
-            println("You can't go that way.")
-            null
-        }
-    }
-
-    fun executeCommand(command: Command): GameState {
-
-        return when (command.action) {
-            LOOK -> {
-                println(currentRoom.describe())
-                this
-            }
-            else -> {
-                this
-            }
+            doublePrint("You can't go that way.")
+            currentRoom
         }
     }
 

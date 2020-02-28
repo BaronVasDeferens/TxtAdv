@@ -15,6 +15,8 @@ data class GameRoom(
         val interactiveObject: InteractiveObject? = null
         ) {
 
+    var beenVisited = false
+
     val adjacentRooms = mutableMapOf<Action, GameRoom>()
 
     fun describe(): String {
@@ -29,7 +31,7 @@ data class GameRoom(
     }
 }
 
-class GameWorld (worldFile: String){
+class GameWorld (worldFile: String = "test_world_01.json"){
 
     private var rooms: List<GameRoom>
     var startingRoom: GameRoom

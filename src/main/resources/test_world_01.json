@@ -46,7 +46,7 @@
           "action": "DEACTIVATE",
           "startState": "ON",
           "endState": "OFF",
-          "verbiage": "The terminal shuts down, exactly as useful as it was when it was on."
+          "verbiage": "The terminal shuts down, now exactly as useful as it was when it was on."
         },
         {
           "action": "DEACTIVATE",
