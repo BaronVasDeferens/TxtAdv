@@ -1,6 +1,6 @@
 class GameMaster(worldFile: String = "test_world_01.json") {
 
-    var state = GameState(GameWorld(worldFile).startingRoom)
+    var state = GameState(GameMap(worldFile).startingRoom)
 
     init {
         state.describeCurrentRoom()

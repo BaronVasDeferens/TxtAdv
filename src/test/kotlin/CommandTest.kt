@@ -1,4 +1,3 @@
-import org.junit.Ignore
 import org.junit.Test
 
 class CommandTest {
@@ -41,7 +40,7 @@ class CommandTest {
 
     @Test
     fun `can read game world from json`() {
-        val gameWorld = GameWorld()
+        val gameWorld = GameMap()
         println(gameWorld.startingRoom)
     }
 
