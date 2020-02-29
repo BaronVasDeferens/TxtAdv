@@ -2,7 +2,9 @@ import com.squareup.moshi.JsonClass
 
 enum class ObjectState {
     ON,
-    OFF
+    OFF,
+    OPEN,
+    CLOSED
 }
 
 @JsonClass(generateAdapter = true)
@@ -16,6 +18,8 @@ data class InteractiveObject(val name: String,
                              var state: ObjectState,
                              val keywords: List<String>,
                              val objectActions: List<ObjectAction>) {
+
+    fun hasKeyword(keyword: String): Boolean = keywords.any { it == keyword }
 
     fun triggerAction(action: ObjectAction) {
         println(action.verbiage)

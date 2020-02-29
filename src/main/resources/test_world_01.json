@@ -2,16 +2,42 @@
   "gameName": "*** Test World One ***",
   "authorName": "Scott West",
   "year": 2020,
-  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a PlanEx-branded mailer crashes into a mesh basket near the door.",
+  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a PlanEx-branded mailer emerges from a slot in the ceiling and lands in a wire basket.",
   "gameRooms": [
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge is cramped, even with both seats and sofas removed. The aft of the pod is hopelessly choked with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge is cramped, even with both seats, sofa, and televisions removed. The aft of the pod is crammed full with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",
           "action": "MOVE_OUT"
+        }
+      ],
+      "interactiveObjects": [
+        {
+          "name": "PlanEx Mailer",
+          "id": "PLANEX_MAILER",
+          "description": "There is a PlanEx Standard Mailer here.",
+          "state": "CLOSED",
+          "keywords": [
+            "package",
+            "mailer"
+          ],
+          "objectActions": [
+            {
+              "action": "EXAMINE",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "This is an officially-branded Planet Express Standard Mailer in the stately green and beige livery of the galaxy's finest delivery service. Capable of enduring forces up to one G and temperatures as low as Absolute Room Temperature, the PlanEx Standard Mailer is the standard-of-the art in delivery technology."
+            },
+            {
+              "action": "TAKE",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "Taken."
+            }
+          ]
         }
       ]
     },
@@ -29,55 +55,57 @@
           "action": "MOVE_SOUTH"
         }
       ],
-      "interactiveObject": {
-        "name": "terminal",
-        "id": "TERMINAL_SCREEN",
-        "description": "You see a computer terminal set into the wall by the door.",
-        "state": "OFF",
-        "keywords": [
-          "screen",
-          "terminal",
-          "computer"
-        ],
-        "objectActions": [
-          {
-            "action": "EXAMINE",
-            "startState": "OFF",
-            "endState": "OFF",
-            "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
-          },
-          {
-            "action": "ACTIVATE",
-            "startState": "OFF",
-            "endState": "ON",
-            "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
-          },
-          {
-            "action": "ACTIVATE",
-            "startState": "ON",
-            "endState": "ON",
-            "verbiage": "The terminal is already on."
-          },
-          {
-            "action": "EXAMINE",
-            "startState": "ON",
-            "endState": "ON",
-            "verbiage": "The words 'ERROR No. 584: OUT OF ORDER' blink on the screen."
-          },
-          {
-            "action": "DEACTIVATE",
-            "startState": "ON",
-            "endState": "OFF",
-            "verbiage": "The terminal shuts down, now exactly as useful as it was when it was on."
-          },
-          {
-            "action": "DEACTIVATE",
-            "startState": "OFF",
-            "endState": "OFF",
-            "verbiage": "The terminal is already off."
-          }
-        ]
-      }
+      "interactiveObjects": [
+        {
+          "name": "terminal",
+          "id": "TERMINAL_SCREEN",
+          "description": "You see a computer terminal set into the wall by the door.",
+          "state": "OFF",
+          "keywords": [
+            "screen",
+            "terminal",
+            "computer"
+          ],
+          "objectActions": [
+            {
+              "action": "EXAMINE",
+              "startState": "OFF",
+              "endState": "OFF",
+              "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
+            },
+            {
+              "action": "ACTIVATE",
+              "startState": "OFF",
+              "endState": "ON",
+              "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
+            },
+            {
+              "action": "ACTIVATE",
+              "startState": "ON",
+              "endState": "ON",
+              "verbiage": "The terminal is already on."
+            },
+            {
+              "action": "EXAMINE",
+              "startState": "ON",
+              "endState": "ON",
+              "verbiage": "The words 'ERROR No. 584: OUT OF ORDER' blink on the screen."
+            },
+            {
+              "action": "DEACTIVATE",
+              "startState": "ON",
+              "endState": "OFF",
+              "verbiage": "The terminal shuts down, now exactly as useful as it was when it was on."
+            },
+            {
+              "action": "DEACTIVATE",
+              "startState": "OFF",
+              "endState": "OFF",
+              "verbiage": "The terminal is already off."
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Stairwell Top",
@@ -93,7 +121,7 @@
           "action": "MOVE_DOWN"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     },
     {
       "name": "Lower Stairwell",
@@ -109,7 +137,7 @@
           "action": "MOVE_DOWN"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     },
     {
       "name": "Landing",
@@ -121,7 +149,7 @@
           "action": "MOVE_UP"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     }
   ]
 }

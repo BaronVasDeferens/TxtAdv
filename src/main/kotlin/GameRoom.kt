@@ -16,8 +16,8 @@ data class GameRoom(
         val id: String,
         val description: String,
         val adjacentRoomIds: List<Connection>,
-        val interactiveObject: InteractiveObject? = null
-        ) {
+        var interactiveObjects: MutableList<InteractiveObject>
+) {
 
     var beenVisited = false
 
@@ -31,11 +31,15 @@ data class GameRoom(
     }
 
     fun listItems(): String {
-        return interactiveObject?.description ?: ""
+        var msg = ""
+        interactiveObjects.forEach {
+            msg += "${it.description} \n"
+        }
+        return msg
     }
 }
 
-class GameMap (worldFile: String = "test_world_01.json"){
+class GameMap(worldFile: String = "test_world_01.json") {
 
     private var rooms: List<GameRoom>
     var startingRoom: GameRoom
