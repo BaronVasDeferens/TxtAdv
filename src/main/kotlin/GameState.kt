@@ -34,10 +34,12 @@ data class GameState(
                 doublePrint("I don't know what you mean...")
                 this
             }
+
             INVENTORY -> {
                 displayInventory()
                 this
             }
+
             LOOK -> {
                 describeCurrentRoom()
                 this
@@ -54,14 +56,16 @@ data class GameState(
                 }
                 this
             }
+
             WAIT -> {
                 doublePrint(WAIT.display)
                 this
             }
+
             QUIT -> {
                 this
             }
-            LOOK,
+
             MOVE_NORTH,
             MOVE_EAST,
             MOVE_SOUTH,
@@ -78,7 +82,6 @@ data class GameState(
                 this
             }
         }
-
     }
 
 
@@ -90,6 +93,8 @@ data class GameState(
             if (moveToHere.beenVisited == false) {
                 doublePrint(moveToHere.describe())
                 moveToHere.beenVisited = true
+            } else {
+                doublePrint(moveToHere.name)
             }
             moveAction.display
             moveToHere

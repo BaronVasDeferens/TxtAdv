@@ -25,7 +25,7 @@
           "action": "MOVE_IN"
         },
         {
-          "id": "STAIRWELL_5",
+          "id": "STAIRWELL_TOP",
           "action": "MOVE_SOUTH"
         }
       ],
@@ -81,7 +81,7 @@
     },
     {
       "name": "Stairwell Top",
-      "id": "STAIRWELL_5",
+      "id": "STAIRWELL_TOP",
       "description": "The top of a stairwell. The stairs descend from here. To the north, natural light streams in through an open door marked 'EXIT.'",
       "adjacentRoomIds": [
         {
@@ -89,7 +89,7 @@
           "action": "MOVE_NORTH"
         },
         {
-          "id": "STAIRWELL_4",
+          "id": "STAIRWELL_MIDDLE",
           "action": "MOVE_DOWN"
         }
       ],
@@ -97,15 +97,15 @@
     },
     {
       "name": "Lower Stairwell",
-      "id": "STAIRWELL_4",
-      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. Downstairs there loos to be a door and a landing. It seems a lot brighter upstairs.",
+      "id": "STAIRWELL_MIDDLE",
+      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. The stairs wind further down. It seems a lot brighter upstairs.",
       "adjacentRoomIds": [
         {
-          "id": "STAIRWELL_5",
+          "id": "STAIRWELL_TOP",
           "action": "MOVE_UP"
         },
         {
-          "id": "STAIR_LANDING",
+          "id": "STAIRWELL_LANDING",
           "action": "MOVE_DOWN"
         }
       ],
@@ -113,11 +113,11 @@
     },
     {
       "name": "Landing",
-      "id": "STAIR_LANDING",
+      "id": "STAIRWELL_LANDING",
       "description": "A floor landing in the stairwell. Like the rest of the stairwell, it is dim and green. To the north of the landing is a steel door marked '4.' The stairs lead up, but the stairs down are impassably choked with rubble.",
       "adjacentRoomIds": [
         {
-          "id": "STAIRWELL_4",
+          "id": "STAIRWELL_MIDDLE",
           "action": "MOVE_UP"
         }
       ],
