@@ -1,6 +1,10 @@
 class GameMaster(worldFile: String = "test_world_01.json") {
 
-    var state = GameState(GameMap(worldFile).startingRoom)
+    val gameMap = GameMap(worldFile)
+    val startingRoom = gameMap.startingRoom
+    val carriedItems =  gameMap.carriedItems
+
+    var state = GameState(startingRoom, carriedItems)
 
     init {
         state.describeCurrentRoom()

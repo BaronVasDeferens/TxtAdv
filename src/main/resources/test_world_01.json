@@ -3,6 +3,7 @@
   "authorName": "Scott West",
   "year": 2020,
   "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a large envelope emerges from a slot in the ceiling and lands in a wire basket.",
+  "carriedItems": [],
   "gameRooms": [
     {
       "name": "Rocket Pod Bridge",

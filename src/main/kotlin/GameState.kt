@@ -2,15 +2,13 @@ import Action.*
 
 data class GameState(
         val currentRoom: GameRoom,
-        val success: Boolean = true) {
+        val carriedItems: MutableList<InteractiveObject> = mutableListOf()) {
 
     companion object {
         fun doublePrint(msg: String) {
             println("$msg\n")
         }
     }
-
-    val carriedItems: MutableList<InteractiveObject> = mutableListOf()
 
     fun describeCurrentRoom() {
         doublePrint(currentRoom.describe())
@@ -40,10 +38,10 @@ data class GameState(
 
             TAKE -> {
                 if (command.target != null) {
-                    val x =currentRoom.interactiveObjects.remove(command.target)
-                    val y = carriedItems.add(command.target)
-                    doublePrint("Taken. $x $y")
-                    this
+                    currentRoom.interactiveObjects.remove(command.target)
+                    carriedItems.add(command.target)
+                    doublePrint("Taken.")
+                    this.copy()
                 } else {
                     doublePrint("Say what, now?")
                     this

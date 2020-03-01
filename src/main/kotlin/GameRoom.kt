@@ -43,6 +43,7 @@ class GameMap(worldFile: String = "test_world_01.json") {
 
     private var rooms: List<GameRoom>
     var startingRoom: GameRoom
+    val carriedItems: MutableList<InteractiveObject> = mutableListOf()
 
     private val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
