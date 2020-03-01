@@ -39,7 +39,7 @@
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, bounded into a single, massive wad by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, bonded into a single, massive wad by a thick web of nano-carbo belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",
