@@ -24,9 +24,9 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
     QUIT(listOf("quit", "q"), "Ok, then..."),
 
+    DEBUG(listOf("debug"), ""),
+
     NOTHING(emptyList(), "You can't do that here.");
 }
-
-class Item(val name: String, val description: String)
 
 data class Command(val action: Action = Action.NOTHING, val target: InteractiveObject? = null)

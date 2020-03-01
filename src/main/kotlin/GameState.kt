@@ -36,11 +36,21 @@ data class GameState(
                 this
             }
 
+            DEBUG -> {
+                println(currentRoom)
+                println(carriedItems)
+                this
+            }
+
             TAKE -> {
                 if (command.target != null) {
-                    currentRoom.interactiveObjects.remove(command.target)
-                    carriedItems.add(command.target)
-                    doublePrint("Taken.")
+                    if (currentRoom.interactiveObjects.remove(command.target)) {
+                        carriedItems.add(command.target)
+                        doublePrint(command.target.triggerAction(command.target.objectActions.first { it.action == TAKE }))
+                    } else {
+                        doublePrint("That item is either not here or in your inventory already.")
+                    }
+
                     this.copy()
                 } else {
                     doublePrint("Say what, now?")
@@ -48,13 +58,28 @@ data class GameState(
                 }
             }
 
+            DROP -> {
+
+                if (command.target != null && carriedItems.contains(command.target)) {
+                    if (carriedItems.remove(command.target)) {
+                        currentRoom.interactiveObjects.add(command.target)
+                        doublePrint(command.target.triggerAction(command.target.objectActions.first { it.action == DROP }))
+                    } else {
+                        doublePrint("That item is not in your inventory...")
+                    }
+                } else {
+                    doublePrint("That item is not in your inventory.")
+                }
+
+                this.copy()
+            }
+
             ACTIVATE,
             DEACTIVATE,
             EXAMINE -> {
                 if (command.target != null) {
                     val objectAction = command.target.objectActions.firstOrNull { it.action == command.action && command.target.state == it.startState }
-
-                    objectAction?.let { command.target.triggerAction(it) }
+                    objectAction?.let { doublePrint(command.target.triggerAction(it))}
                 } else {
                     doublePrint("You can't do that.")
                 }
@@ -78,11 +103,6 @@ data class GameState(
             MOVE_OUT -> {
                 this.copy(currentRoom = move(command.action))
             }
-
-            else -> {
-                doublePrint("I don't understand that.")
-                this
-            }
         }
     }
 
@@ -91,11 +111,12 @@ data class GameState(
         val moveToHere: GameRoom? = currentRoom.adjacentRooms[moveAction]
 
         return if (moveToHere != null) {
-            if (moveToHere.beenVisited == false) {
+            if (!moveToHere.beenVisited) {
                 doublePrint(moveToHere.describe())
                 moveToHere.beenVisited = true
+            } else {
+                doublePrint(moveToHere.name)
             }
-            moveAction.display
             moveToHere
         } else {
             doublePrint("You can't go that way.")

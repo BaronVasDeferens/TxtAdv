@@ -5,7 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 
 @JsonClass(generateAdapter = true)
-data class GameWorld(val gameName: String, val authorName: String, val year: Int, val openingText: String, val gameRooms: List<GameRoom>)
+data class GameWorld(val gameName: String, val authorName: String, val year: Int, val openingText: String, val gameRooms: List<GameRoom>, val carriedItems: MutableList<InteractiveObject> = mutableListOf())
 
 @JsonClass(generateAdapter = true)
 data class Connection(val action: Action, val id: String)       // FIXME: choose a new name
@@ -31,11 +31,7 @@ data class GameRoom(
     }
 
     fun listItems(): String {
-        var msg = ""
-        interactiveObjects.forEach {
-            msg += "${it.description} \n"
-        }
-        return msg
+        return interactiveObjects.joinToString ("\n") { it.description }
     }
 }
 
@@ -63,6 +59,7 @@ class GameMap(worldFile: String = "test_world_01.json") {
         }
 
         startingRoom = idToRoom["START"]!!
+        carriedItems.addAll(gameWorld.carriedItems)
 
         println("""
             |

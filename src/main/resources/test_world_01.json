@@ -2,13 +2,44 @@
   "gameName": "*** Test World One ***",
   "authorName": "Scott West",
   "year": 2020,
-  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a large envelope emerges from a slot in the ceiling and lands in a wire basket.",
-  "carriedItems": [],
+  "openingText": "You are awakened by the familiar sound of servos struggling to open the pod door. Dull, vaguely pinkish light and temperate air waft in. The ship cheerfully announces 'DELIVERY TIME!' just as a large envelope emerges from a slot in the ceiling and lands in a wire basket with a crash.",
+  "carriedItems": [
+    {
+      "name": "PlanEx Id Badge",
+      "id": "ID_BADGE",
+      "description": "There is a Planet Express-branded employee name badge here.",
+      "state": "NONE",
+      "keywords": [
+        "badge",
+        "id"
+      ],
+      "objectActions": [
+        {
+          "action": "EXAMINE",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "The id badge is small rectangle of green plastic. The badge's main feature is a black-and-white portrait of your face, which if examined closely is a gestalt of hundreds of tiny bar codes, all different. The back of the badge is a list of instructions and coupon codes to use in the event of your death."
+        },
+        {
+          "action": "DROP",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "In flagrant violation of the PlanEx Rules and Regulations, Section IV: 'On Identification,' you drop the id badge. Is this feeling defiance...or indifference?"
+        },
+        {
+          "action": "TAKE",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "You take the PlanEx id badge, feeling slightly guilty for having parted with it to begin with."
+        }
+      ]
+    }
+  ],
   "gameRooms": [
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge is cramped, even with both seats, sofas, and televisions removed. The aft of the pod is crammed full with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, bounded into a single, massive wad by a thick web of nano-carbo belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",
@@ -17,7 +48,7 @@
       ],
       "interactiveObjects": [
         {
-          "name": "PlanEx Mailer",
+          "name": "PlanEx Standard Mailer",
           "id": "PLANEX_MAILER",
           "description": "There is a PlanEx Standard Mailer here.",
           "state": "CLOSED",
@@ -36,7 +67,13 @@
               "action": "TAKE",
               "startState": "CLOSED",
               "endState": "CLOSED",
-              "verbiage": "Taken."
+              "verbiage": "You take the Planet Express Standard Mailer."
+            },
+            {
+              "action": "DROP",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "You drop the Planet Express Standard Mailer. A warning display pulses menacingly in the corner, indicating possible impact damage."
             }
           ]
         }
@@ -45,7 +82,7 @@
     {
       "name": "Landing Platform",
       "id": "LANDING_PLATFORM",
-      "description": "This is basically just the roof of a building, though there are a number of very serious-looking notices regarding authorized parking. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
+      "description": "This is basically just the roof of a small building, though there are a number of very serious-looking notices warning against even thinking about parking here without authorization. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
       "adjacentRoomIds": [
         {
           "id": "START",
@@ -127,7 +164,7 @@
     {
       "name": "Lower Stairwell",
       "id": "STAIRWELL_4",
-      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. Downstairs there loos to be a door and a landing. It seems a lot brighter upstairs.",
+      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. Downstairs there is a landing. It seems a lot brighter upstairs.",
       "adjacentRoomIds": [
         {
           "id": "STAIRWELL_5",

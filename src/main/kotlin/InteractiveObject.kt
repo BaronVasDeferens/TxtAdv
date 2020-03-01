@@ -4,7 +4,8 @@ enum class ObjectState {
     ON,
     OFF,
     OPEN,
-    CLOSED
+    CLOSED,
+    NONE
 }
 
 @JsonClass(generateAdapter = true)
@@ -21,8 +22,8 @@ data class InteractiveObject(val name: String,
 
     fun hasKeyword(keyword: String): Boolean = keywords.any { it == keyword }
 
-    fun triggerAction(action: ObjectAction) {
-        println(action.verbiage)
+    fun triggerAction(action: ObjectAction): String {
         state = action.endState
+        return action.verbiage
     }
 }
