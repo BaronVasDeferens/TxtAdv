@@ -2,12 +2,12 @@
   "gameName": "*** Test World One ***",
   "authorName": "Scott West",
   "year": 2020,
-  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a PlanEx-branded mailer emerges from a slot in the ceiling and lands in a wire basket.",
+  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a large envelope emerges from a slot in the ceiling and lands in a wire basket.",
   "gameRooms": [
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge is cramped, even with both seats, sofa, and televisions removed. The aft of the pod is crammed full with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge is cramped, even with both seats, sofas, and televisions removed. The aft of the pod is crammed full with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",

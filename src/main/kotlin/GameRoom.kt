@@ -63,7 +63,9 @@ class GameMap(worldFile: String = "test_world_01.json") {
 
         startingRoom = idToRoom["START"]!!
 
-        println("""${gameWorld.gameName}
+        println("""
+            |
+            |${gameWorld.gameName}
             |by ${gameWorld.authorName}
             |${gameWorld.year}
             |

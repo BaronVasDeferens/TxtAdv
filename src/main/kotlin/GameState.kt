@@ -22,7 +22,6 @@ data class GameState(
         doublePrint(msg)
     }
 
-
     fun performAction(command: Command): GameState {
 
         return when (command.action) {
@@ -46,7 +45,7 @@ data class GameState(
                     doublePrint("Taken. $x $y")
                     this
                 } else {
-                    doublePrint("Say what now?")
+                    doublePrint("Say what, now?")
                     this
                 }
             }
@@ -87,9 +86,7 @@ data class GameState(
                 this
             }
         }
-
     }
-
 
     fun move(moveAction: Action): GameRoom {
 
