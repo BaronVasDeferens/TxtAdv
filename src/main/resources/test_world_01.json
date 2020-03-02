@@ -2,86 +2,152 @@
   "gameName": "*** Test World One ***",
   "authorName": "Scott West",
   "year": 2020,
-  "openingText": "You are awakened by the familiar sound of the pod door opening. Dull, vaguely pinkish light and temperate air waft in. The ship emits a cheerful tone and a PlanEx-branded mailer crashes into a mesh basket near the door.",
+  "openingText": "You are awakened by the familiar sound of servos struggling to open the pod door. Dull, vaguely pinkish light and temperate air waft in. The ship cheerfully announces 'DELIVERY TIME!' just as a large envelope emerges from a slot in the ceiling and lands in a wire basket with a crash.",
+  "carriedItems": [
+    {
+      "name": "PlanEx Id Badge",
+      "id": "ID_BADGE",
+      "description": "There is a Planet Express-branded employee name badge here.",
+      "state": "NONE",
+      "keywords": [
+        "badge",
+        "id"
+      ],
+      "objectActions": [
+        {
+          "action": "EXAMINE",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "The id badge is small rectangle of green plastic. The badge's main feature is a black-and-white portrait of your face, which if examined closely is a gestalt of hundreds of tiny bar codes, all different. The back of the badge is a list of instructions and coupon codes to use in the event of your death."
+        },
+        {
+          "action": "DROP",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "In flagrant violation of the PlanEx Rules and Regulations, Section IV: 'On Identification,' you drop the id badge. Is this feeling defiance...or indifference?"
+        },
+        {
+          "action": "TAKE",
+          "startState": "NONE",
+          "endState": "NONE",
+          "verbiage": "You take the PlanEx id badge, feeling slightly guilty for having parted with it to begin with."
+        }
+      ]
+    }
+  ],
   "gameRooms": [
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge is cramped, even with both seats and sofas removed. The aft of the pod is hopelessly choked with packages, all bound together by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, bonded into a single, massive wad by a thick web of nano-carbo belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",
           "action": "MOVE_OUT"
+        }
+      ],
+      "interactiveObjects": [
+        {
+          "name": "PlanEx Standard Mailer",
+          "id": "PLANEX_MAILER",
+          "description": "There is a PlanEx Standard Mailer here.",
+          "state": "CLOSED",
+          "keywords": [
+            "package",
+            "mailer"
+          ],
+          "objectActions": [
+            {
+              "action": "EXAMINE",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "This is an officially-branded Planet Express Standard Mailer in the stately green and beige livery of the galaxy's finest delivery service. Capable of enduring forces up to one G and temperatures as low as Absolute Room Temperature, the PlanEx Standard Mailer is the standard-of-the art in delivery technology."
+            },
+            {
+              "action": "TAKE",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "You take the Planet Express Standard Mailer."
+            },
+            {
+              "action": "DROP",
+              "startState": "CLOSED",
+              "endState": "CLOSED",
+              "verbiage": "You drop the Planet Express Standard Mailer. A warning display pulses menacingly in the corner, indicating possible impact damage."
+            }
+          ]
         }
       ]
     },
     {
       "name": "Landing Platform",
       "id": "LANDING_PLATFORM",
-      "description": "This is basically just the roof of a building, though there are a number of very serious-looking notices regarding authorized parking. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
+      "description": "This is basically just the roof of a small building, though there are a number of very serious-looking notices warning against even thinking about parking here without authorization. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
       "adjacentRoomIds": [
         {
           "id": "START",
           "action": "MOVE_IN"
         },
         {
-          "id": "STAIRWELL_TOP",
+          "id": "STAIRWELL_5",
           "action": "MOVE_SOUTH"
         }
       ],
-      "interactiveObject": {
-        "name": "terminal",
-        "id": "TERMINAL_SCREEN",
-        "description": "You see a computer terminal set into the wall by the door.",
-        "state": "OFF",
-        "keywords": [
-          "screen",
-          "terminal",
-          "computer"
-        ],
-        "objectActions": [
-          {
-            "action": "EXAMINE",
-            "startState": "OFF",
-            "endState": "OFF",
-            "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
-          },
-          {
-            "action": "ACTIVATE",
-            "startState": "OFF",
-            "endState": "ON",
-            "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
-          },
-          {
-            "action": "ACTIVATE",
-            "startState": "ON",
-            "endState": "ON",
-            "verbiage": "The terminal is already on."
-          },
-          {
-            "action": "EXAMINE",
-            "startState": "ON",
-            "endState": "ON",
-            "verbiage": "The words 'ERROR No. 584: OUT OF ORDER' blink on the screen."
-          },
-          {
-            "action": "DEACTIVATE",
-            "startState": "ON",
-            "endState": "OFF",
-            "verbiage": "The terminal shuts down, now exactly as useful as it was when it was on."
-          },
-          {
-            "action": "DEACTIVATE",
-            "startState": "OFF",
-            "endState": "OFF",
-            "verbiage": "The terminal is already off."
-          }
-        ]
-      }
+      "interactiveObjects": [
+        {
+          "name": "terminal",
+          "id": "TERMINAL_SCREEN",
+          "description": "You see a computer terminal set into the wall by the door.",
+          "state": "OFF",
+          "keywords": [
+            "screen",
+            "terminal",
+            "computer"
+          ],
+          "objectActions": [
+            {
+              "action": "EXAMINE",
+              "startState": "OFF",
+              "endState": "OFF",
+              "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
+            },
+            {
+              "action": "ACTIVATE",
+              "startState": "OFF",
+              "endState": "ON",
+              "verbiage": "The terminal screen flickers on and shows the result of a brief start-up check: 'FAILED. This terminal is out of order. Contact your systems administrator for help.'"
+            },
+            {
+              "action": "ACTIVATE",
+              "startState": "ON",
+              "endState": "ON",
+              "verbiage": "The terminal is already on."
+            },
+            {
+              "action": "EXAMINE",
+              "startState": "ON",
+              "endState": "ON",
+              "verbiage": "The words 'ERROR No. 584: OUT OF ORDER' blink on the screen."
+            },
+            {
+              "action": "DEACTIVATE",
+              "startState": "ON",
+              "endState": "OFF",
+              "verbiage": "The terminal shuts down, now exactly as useful as it was when it was on."
+            },
+            {
+              "action": "DEACTIVATE",
+              "startState": "OFF",
+              "endState": "OFF",
+              "verbiage": "The terminal is already off."
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Stairwell Top",
-      "id": "STAIRWELL_TOP",
+      "id": "STAIRWELL_5",
       "description": "The top of a stairwell. The stairs descend from here. To the north, natural light streams in through an open door marked 'EXIT.'",
       "adjacentRoomIds": [
         {
@@ -89,39 +155,39 @@
           "action": "MOVE_NORTH"
         },
         {
-          "id": "STAIRWELL_MIDDLE",
+          "id": "STAIRWELL_4",
           "action": "MOVE_DOWN"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     },
     {
       "name": "Lower Stairwell",
-      "id": "STAIRWELL_MIDDLE",
-      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. The stairs wind further down. It seems a lot brighter upstairs.",
+      "id": "STAIRWELL_4",
+      "description": "The stairwell is lit in dim green light, courtesy of barely glowing strips set into the concrete walls. Downstairs there is a landing. It seems a lot brighter upstairs.",
       "adjacentRoomIds": [
         {
-          "id": "STAIRWELL_TOP",
+          "id": "STAIRWELL_5",
           "action": "MOVE_UP"
         },
         {
-          "id": "STAIRWELL_LANDING",
+          "id": "STAIR_LANDING",
           "action": "MOVE_DOWN"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     },
     {
       "name": "Landing",
-      "id": "STAIRWELL_LANDING",
+      "id": "STAIR_LANDING",
       "description": "A floor landing in the stairwell. Like the rest of the stairwell, it is dim and green. To the north of the landing is a steel door marked '4.' The stairs lead up, but the stairs down are impassably choked with rubble.",
       "adjacentRoomIds": [
         {
-          "id": "STAIRWELL_MIDDLE",
+          "id": "STAIRWELL_4",
           "action": "MOVE_UP"
         }
       ],
-      "interactiveObject": null
+      "interactiveObjects": []
     }
   ]
 }

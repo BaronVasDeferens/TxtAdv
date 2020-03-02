@@ -1,6 +1,10 @@
 class GameMaster(worldFile: String = "test_world_01.json") {
 
-    var state = GameState(GameMap(worldFile).startingRoom)
+    val gameMap = GameMap(worldFile)
+    val startingRoom = gameMap.startingRoom
+    val carriedItems =  gameMap.carriedItems
+
+    var state = GameState(startingRoom, carriedItems)
 
     init {
         state.describeCurrentRoom()
@@ -23,9 +27,8 @@ class GameMaster(worldFile: String = "test_world_01.json") {
         // Find target, if any
         val parsedTarget = try {
             val targetToken = tokens[1]
-            if (state.currentRoom.interactiveObject?.keywords?.any { it == targetToken } == true) {
-                state.currentRoom.interactiveObject
-            } else null
+            state.currentRoom.interactiveObjects.firstOrNull { obj -> obj.hasKeyword(targetToken) }
+                    ?: state.carriedItems.firstOrNull { item -> item.hasKeyword(targetToken) }
         } catch (e: Exception) {
             null
         }

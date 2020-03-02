@@ -5,7 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 
 @JsonClass(generateAdapter = true)
-data class GameWorld(val gameName: String, val authorName: String, val year: Int, val openingText: String, val gameRooms: List<GameRoom>)
+data class GameWorld(val gameName: String, val authorName: String, val year: Int, val openingText: String, val gameRooms: List<GameRoom>, val carriedItems: MutableList<InteractiveObject> = mutableListOf())
 
 @JsonClass(generateAdapter = true)
 data class Connection(val action: Action, val id: String)       // FIXME: choose a new name
@@ -16,8 +16,8 @@ data class GameRoom(
         val id: String,
         val description: String,
         val adjacentRoomIds: List<Connection>,
-        val interactiveObject: InteractiveObject? = null
-        ) {
+        var interactiveObjects: MutableList<InteractiveObject>
+) {
 
     var beenVisited = false
 
@@ -31,14 +31,15 @@ data class GameRoom(
     }
 
     fun listItems(): String {
-        return interactiveObject?.description ?: ""
+        return interactiveObjects.joinToString ("\n") { it.description }
     }
 }
 
-class GameMap (worldFile: String = "test_world_01.json"){
+class GameMap(worldFile: String = "test_world_01.json") {
 
     private var rooms: List<GameRoom>
     var startingRoom: GameRoom
+    val carriedItems: MutableList<InteractiveObject> = mutableListOf()
 
     private val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
@@ -58,8 +59,11 @@ class GameMap (worldFile: String = "test_world_01.json"){
         }
 
         startingRoom = idToRoom["START"]!!
+        carriedItems.addAll(gameWorld.carriedItems)
 
-        println("""${gameWorld.gameName}
+        println("""
+            |
+            |${gameWorld.gameName}
             |by ${gameWorld.authorName}
             |${gameWorld.year}
             |
