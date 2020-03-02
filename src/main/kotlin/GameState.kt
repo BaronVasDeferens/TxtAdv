@@ -38,9 +38,15 @@ data class GameState(
                 this
             }
 
-            DEBUG -> {
-                println(currentRoom)
-                println(carriedItems)
+            HELP -> {
+                doublePrint("""Broad speaking, your best bet is to formulate commands like this:
+                    | <VERB> <NOUN>
+                    | where your commands are:
+                    | 
+                """.trimMargin() +
+                Action.values()
+                        .filter { it != NOTHING }
+                        .joinToString("\n") {it.keyWords.first()})
                 this
             }
 

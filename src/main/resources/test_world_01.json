@@ -1,8 +1,8 @@
 {
-  "gameName": "*** Test World One ***",
+  "gameName": "*** Delivery Time ***",
   "authorName": "Scott West",
   "year": 2020,
-  "openingText": "You are awakened by the familiar sound of servos struggling to open the pod door. Dull, vaguely pinkish light and temperate air waft in. The ship cheerfully announces 'DELIVERY TIME!' just as a large envelope emerges from a slot in the ceiling and lands in a wire basket with a crash.",
+  "openingText": "You are awakened by the familiar sound of servos struggling to open the delivery pod door. Dull, vaguely pinkish light and temperate air wafts in through the exit door. The ship cheerfully announces 'DELIVERY TIME!' just as a large envelope emerges from a slot in the ceiling and lands at your feet with a plop.",
   "carriedItems": [
     {
       "name": "PlanEx Id Badge",
@@ -39,7 +39,7 @@
     {
       "name": "Rocket Pod Bridge",
       "id": "START",
-      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, bonded into a single, massive wad by a thick web of nano-carbo belts. The pod door is open.",
+      "description": "The inside of the rocket pod's bridge has been stripped of nearly every human comfort or amenity, save for a single seat. Even the manual controls have been removed to maximize delivery potential. Like the bridge, the aft of the pod is crammed with packages, but those in the back have been bonded into a single, massive wad by a thick web of nano-carbon belts. The pod door is open.",
       "adjacentRoomIds": [
         {
           "id": "LANDING_PLATFORM",
@@ -109,7 +109,7 @@
               "action": "EXAMINE",
               "startState": "OFF",
               "endState": "OFF",
-              "verbiage": "The small screen of the terminal is dusty and dark. It looks like the power is off."
+              "verbiage": "The small screen of the terminal is grimy and dark. An artifact of a lost civilization? Or is the power off?"
             },
             {
               "action": "ACTIVATE",

@@ -24,7 +24,7 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
 
     QUIT(listOf("quit", "q"), "Ok, then..."),
 
-    DEBUG(listOf("debug"), ""),
+    HELP(listOf("help"), "Things you can do..."),
 
     NOTHING(emptyList(), "You can't do that here.");
 }
