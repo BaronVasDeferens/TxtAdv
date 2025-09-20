@@ -9,7 +9,7 @@ enum class Action(val keyWords: List<String> = listOf(), val display: String = "
     MOVE_UP(listOf("up", "u"),"Going up..."),
     MOVE_DOWN(listOf("down", "d"), "Heading down..."),
     MOVE_IN(listOf("in"), "Going in..."),
-    MOVE_OUT(listOf("out"), "Heading out..."),
+    MOVE_OUT(listOf("out", "leave"), "Heading out..."),
 
     ACTIVATE(listOf("on", "activate"), ""),
     DEACTIVATE(listOf("off", "deactivate"), ""),

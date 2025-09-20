@@ -5,8 +5,16 @@ data class GameState(
         val carriedItems: MutableList<InteractiveObject> = mutableListOf()) {
 
     companion object {
+
+        fun chunkText(text: String, words: Int = 18): String {
+            return text.split(" ")
+                .chunked(words)
+                .joinToString(separator = " ") { it.joinToString(separator = " ").trim().plus("\n") }
+
+        }
+
         fun doublePrint(msg: String) {
-            println("$msg\n")
+            println("${chunkText(msg)}\n")
         }
     }
 
@@ -39,7 +47,7 @@ data class GameState(
             }
 
             HELP -> {
-                doublePrint("""Broad speaking, your best bet is to formulate commands like this:
+                doublePrint("""Broadly speaking, your best bet is to formulate commands like this:
                     | <VERB> <NOUN>
                     | where your commands are:
                     | 

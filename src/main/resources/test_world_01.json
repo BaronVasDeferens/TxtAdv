@@ -61,7 +61,7 @@
               "action": "EXAMINE",
               "startState": "CLOSED",
               "endState": "CLOSED",
-              "verbiage": "This is an officially-branded Planet Express Standard Mailer in the stately green and beige livery of the galaxy's finest delivery service. Capable of enduring forces up to one G and temperatures as low as Absolute Room Temperature, the PlanEx Standard Mailer is the standard-of-the art in delivery technology."
+              "verbiage": "This is an officially-branded Planet Express Standard Mailer in the stately green and beige livery of the galaxy's finest delivery service. Capable of enduring forces up to one G and temperatures as low as Absolute Room Temperature, the PlanEx Standard Mailer is the standard-of-the art in delivery technology. It is addressed to 'Dzor'."
             },
             {
               "action": "TAKE",
@@ -82,7 +82,7 @@
     {
       "name": "Landing Platform",
       "id": "LANDING_PLATFORM",
-      "description": "This is basically just the roof of a small building, though there are a number of very serious-looking notices warning against even thinking about parking here without authorization. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
+      "description": "This is the roof of a small building. There are a number of very serious-looking notices warning against even thinking about parking here. The air is still. The surrounding city squats quietly in the morning light, blanketed in a heavy pink mist. The PlanEx Rocket Delivery Pod is here, shiny and green, its pod door open invitingly. There is a stairwell access door to the south.",
       "adjacentRoomIds": [
         {
           "id": "START",
@@ -97,7 +97,7 @@
         {
           "name": "terminal",
           "id": "TERMINAL_SCREEN",
-          "description": "You see a computer terminal set into the wall by the door.",
+          "description": "You see a computer terminal set into the wall by the stairwell entrance.",
           "state": "OFF",
           "keywords": [
             "screen",
